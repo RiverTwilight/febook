@@ -1,0 +1,3 @@
+# NextJS
+
+## SSR

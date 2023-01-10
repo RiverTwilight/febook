@@ -1,0 +1,10 @@
+﻿English,Chinese,Status,备注
+browser,浏览器,Verified,
+event loop,事件循环,Draft,
+http,超文本传输协议,Verified,
+macrotask,宏任务,Draft,
+microtask,微任务,Draft,
+React,,Verified,
+variable,变量,Draft,
+Vue,,Verified,
+,闭包,Draft,

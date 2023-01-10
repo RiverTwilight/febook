@@ -1,0 +1,8 @@
+{
+	"label": "工具 & 库",
+	"position": 2,
+	"link": {
+		"slug": "tools",
+		"type": "generated-index"
+	}
+}
