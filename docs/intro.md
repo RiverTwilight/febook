@@ -1,6 +1,6 @@
 ---
 slug: /
-position: 1
+sidebar_position: 0
 ---
 
 # 前端沉淀小册

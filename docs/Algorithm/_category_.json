@@ -1,8 +1,8 @@
 {
 	"label": "数据结构与算法",
-	"position": 2,
+	"position": 3,
 	"link": {
-		"slug": "algorithum",
+		"slug": "Algorithm",
 		"type": "generated-index"
 	}
 }

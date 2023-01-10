@@ -8,13 +8,13 @@ const GITHUB_LINK = "https://github.com/rivertwilight/fav";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: "René's Bookmark | 收藏夹",
+	title: "前端沉淀小册",
 	tagline: "Dinosaurs are cool",
-	url: "https://fav.rene.wang",
+	url: "https://febook.rene.wang",
 	baseUrl: "/",
 	onBrokenLinks: "ignore",
 	onBrokenMarkdownLinks: "warn",
-	favicon: "img/favicon.ico",
+	favicon: "images/favicon.ico",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
@@ -25,8 +25,8 @@ const config = {
 	// metadata like html lang. For example, if your site is Chinese, you may want
 	// to replace "en" with "zh-Hans".
 	i18n: {
-		defaultLocale: "en",
-		locales: ["en"],
+		defaultLocale: "zh-Hans",
+		locales: ["zh-Hans"],
 	},
 
 	presets: [
@@ -57,7 +57,7 @@ const config = {
 				title: "René 的收藏夹",
 				logo: {
 					alt: "My Site Logo",
-					src: "img/icon-192.png",
+					src: "images/icon-192.png",
 				},
 				items: [
 					// {
