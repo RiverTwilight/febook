@@ -2,7 +2,7 @@
 	"label": "计算机基础",
 	"position": 4,
 	"link": {
-		"slug": "algorithum",
+		"slug": "CS",
 		"type": "generated-index"
 	}
 }

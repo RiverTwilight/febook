@@ -1,41 +1,33 @@
-# Website
+<h3 align="center">
+  《 前端沉淀小册 》
+</h3>
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+<p align="center"> 
+  梳理大前端领域方方面面</br>助力面试与深入
+</p>
 
-### Installation
+</br>
 
-```
-$ yarn
-```
+<p align="center">
+  <em>
+    前往阅读 >
+    <a href="https://febook.rene.wang/">
+    febook.rene.wang
+    </a>
+  </em>
+</p>
 
-### Local Development
+## 关于本书
 
-```
-$ yarn start
-```
+撰写本书的目标是：
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+-   为初级开发者提供深入学习的方向与指导
+-   为中级开发者提供复习的参考资料
 
-### Build
+本小册内容不按照学习难度排序，而是根据“大类”平行排序，为了优化阅读体验，只会有二级目录。写作预计耗时一年，我会边实践边写书，公众号也会同步更新最新文章。
 
-```
-$ yarn build
-```
+如果感觉本书对你有所帮助，请点个 Star :star: 支持一下，谢谢！
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## License
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The texts, codes, images, photos, and videos in this repository are licensed under [CC BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

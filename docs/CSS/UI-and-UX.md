@@ -1,11 +1,11 @@
-# UI&UX
+# UI & UX
 
 这同样是产品设计中非常重要的一环。我们看到的页面上的每一个组件，往往是反复斟酌、权衡利弊的结果。
 
 例如，为了提示一类信息，设计师的思考流程如下：
 
-![Untitled](UI&UX%20a49abf173f954c04a435ca27d17bbf9a/Untitled.png)
+![Untitled](/images/information-prompt.png)
 
-在实际应用中，UX 驱动着 UI 设计，而UI又会反哺UX，形成一个良性循环。
+在实际应用中，UX 驱动着 UI 设计，而UI又会反哺 UX，形成一个良性循环。
 
 ## 格式塔心理学
