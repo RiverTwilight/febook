@@ -14,48 +14,46 @@ sidebar_position: 0
 
 命名规范包括对变量、函数、类的命名，常见的命名方法有：
 
-- **PascalCase**：俗称大驼峰，每个单词的首字母都是大写，单词之间没有其他字符，例如 ：`DesertEagle`, `StyleGuide`, `ASeriesOfWords`。
-- **camelCase：**第一个单词的首字母小写，后面的单词的首字母大写，例如：`desertEagle`, `styleGuide`, `aSeriesOfWords`。
-- **Snake_case**：俗称蛇型命名法，单词之间用下划线链接，单词的首字母可以大写也可以小写，例如：`desert_Eagle`, `Style_Guide`, `a_Series_of_Words`
-- **CONSTANT_CASE**：全部大写并用下划线连接，通常用于常量命名。
+-   **PascalCase**：俗称大驼峰，每个单词的首字母都是大写，单词之间没有其他字符，例如 ：`DesertEagle`, `StyleGuide`, `ASeriesOfWords`。
+-   **camelCase：**第一个单词的首字母小写，后面的单词的首字母大写，例如：`desertEagle`, `styleGuide`, `aSeriesOfWords`。
+-   **Snake_case**：俗称蛇型命名法，单词之间用下划线链接，单词的首字母可以大写也可以小写，例如：`desert_Eagle`, `Style_Guide`, `a_Series_of_Words`
+-   **CONSTANT_CASE**：全部大写并用下划线连接，通常用于常量命名。
 
 对于项目中的命名规范，应该**尽可能遵守**。如果是开源项目维护者，你应该拒绝不符合规范的贡献。
 
 > "对规范优劣的争论是没有意义的，有规范你就该去遵守。"
-> 
-> 
-> *[Rebecca Murphey](https://rmurphey.com/)*
-> 
+>
+> _[Rebecca Murphey](https://rmurphey.com/)_
 
 特殊地，对于文件夹的命名，通常采用大写字母的形式，不要包含空格。例如：
 
-- Assets
-- Public
-- Icons
+-   Assets
+-   Public
+-   Icons
 
 空格会导致引擎以及其他命令行工具出现错误，同样，也不要把你的项目文件夹放在包含有空格的目录下面。
-
-特殊地，对于 CSS 和 Javascript，不妨参考[Arirbub的JS代码规范](https://github.com/airbnb/javascript)和[css规范](https://github.com/airbnb/css)。
 
 ## 声明变量的关键字
 
 ES6 后我们又有了两种方式声明变量：
 
-- `const`: 声明一个**不可变**常量，作用域与 var 一致
-- `let` : 作用域仅限代码块，声明效果与 var 一致，**不可以重复声明相同的变量**。
+-   `const`: 声明一个**不可变**常量，作用域与 var 一致
+-   `let` : 作用域仅限代码块，声明效果与 var 一致，**不可以重复声明相同的变量**。
 
 我们约定：ES6 之后不再使用`var`关键字。
 
 此外，还有直接声明全局变量的写法，除非真的需要 window 级访问，那么尽量规定一个作用域。
+
+关于 CSS 和 Javascript 的更多细节，不妨参考Arirbub 的 [JS 代码规范](https://github.com/airbnb/javascript)和[css 规范](https://github.com/airbnb/css)。
 
 ## Git 提交规范
 
 这种习惯有两个核心：
 
 1. 一次提交只涉及一处更改（原子提交）。这里并非指*只更改一个文件*，而是指可以用一句话描述出来的改动。
-2. 提交信息写明提交类型。在 Angular 提交规范中，常见的类型有feat（功能）、impr（性能改进）、fix（修复）、style等。例如：`feat(order): check order validation`
+2. 提交信息写明提交类型。在 Angular 提交规范中，常见的类型有 feat（功能）、impr（性能改进）、fix（修复）、style 等。例如：`feat(order): check order validation`
 
-近几年流行在提交信息中使用emoji，笔者认为是不错的创新。关于提交规范的更多信息，可以参考[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+近几年流行在提交信息中使用 emoji，笔者认为是不错的创新。关于提交规范的更多信息，可以参考[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## 注释规范
 
@@ -63,7 +61,9 @@ ES6 后我们又有了两种方式声明变量：
 
 ```jsx
 // 解析链接
-const parseUrl = () => {/***/}
+const parseUrl = () => {
+	/***/
+};
 ```
 
 这是笔者在某些国内“编程网站”上经常看到的注释模式。
@@ -72,4 +72,4 @@ const parseUrl = () => {/***/}
 
 尽管大部分用户不会检查控制台，但软件应对用户尽量保持黑盒状态，尽可能隐去一切工作细节，把最简单的部分留给用户。
 
-通常，你可以通过编写一段简单的shell脚本放在`postbuild`命令中；也可以养成调试完及时注释或删除断点的习惯。
+通常，你可以通过编写一段简单的 shell 脚本放在`postbuild`命令中；也可以养成调试完及时注释或删除断点的习惯。
