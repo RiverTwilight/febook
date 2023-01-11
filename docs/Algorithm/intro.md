@@ -1,9 +1,8 @@
 ---
-slug: /Algorithm
-position: 1
+sidebar_position: 1
 ---
 
-# 引言
+# 为什么要学算法？
 
 科班同学可能已经很熟悉这个话题了。
 

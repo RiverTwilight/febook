@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 # React
 
 在深入源码之前，我们先澄清几个点：

@@ -14,7 +14,7 @@ const config = {
 	baseUrl: "/",
 	onBrokenLinks: "ignore",
 	onBrokenMarkdownLinks: "warn",
-	favicon: "images/favicon.ico",
+	favicon: "icons/favicon.ico",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
@@ -90,7 +90,7 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} René Wang.`,
+				copyright: `Copyright © 2022 - ${new Date().getFullYear()} René Wang.`,
 			},
 			prism: {
 				theme: lightCodeTheme,

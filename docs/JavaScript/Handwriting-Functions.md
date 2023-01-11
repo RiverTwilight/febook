@@ -31,6 +31,22 @@ Function.prototype.call = function (obj, arg) {
 };
 ```
 
+## some
+
+思路：遍历数组，使用回调函数判断，如果有一个满足条件，返回 true，否则返回 false。
+
+```javascript
+Array.prototype.some = function (callback, thisArg) {
+    for (let i = 0; i < this.length; i++) {
+        if (callback.call(thisArg, this[i], i, this)) {
+            return true;
+        }
+    }
+    return false;
+};
+```
+```
+
 ## 扩展阅读
 
 [The seventh way to call a JavaScript function without parentheses](https://portswigger.net/research/the-seventh-way-to-call-a-javascript-function-without-parentheses)
