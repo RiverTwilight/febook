@@ -9,7 +9,7 @@ const GITHUB_LINK = "https://github.com/rivertwilight/fav";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: "前端沉淀小册",
-	tagline: "Dinosaurs are cool",
+	tagline: "多年沉淀，系统梳理",
 	url: "https://febook.rene.wang",
 	baseUrl: "/",
 	onBrokenLinks: "ignore",
@@ -40,7 +40,7 @@ const config = {
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					editUrl:
-						"https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+						"https://github.com/rivertwilight/febook/tree/master/",
 				},
 				blog: false,
 				theme: {
