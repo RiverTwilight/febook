@@ -15,3 +15,7 @@ sidebar_position: 0
 IE盒模型，使用`box-sizing: border-box` 规定：
 
 ![Untitled](%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA%2043ba708be2de493b9269462f06b4eecd/Untitled%201.png)
+
+## 隐藏元素的三种方法
+
+这也是经典面试题。
