@@ -1,3 +1,10 @@
+
+<p align="center">
+  <a href="https://febook.rene.wang/">
+    <img src="https://febook.rene.wang/images/cover.png" width="230">
+  </a>
+</p>
+
 <h3 align="center">
   《 前端沉淀小册 》
 </h3>

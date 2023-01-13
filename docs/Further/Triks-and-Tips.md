@@ -1,7 +1,71 @@
 # 冷门技巧 & 疑难杂症
 
-## 阻止浏览器加载favicon
+## 阻止浏览器加载 favicon
 
 ```html
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:," />
 ```
+
+## Map 返回 Object 时的 Lint 问题
+
+![image](https://user-images.githubusercontent.com/52880665/196023762-76da513c-f5e6-4063-aee0-d45d18033c61.png)
+
+```jsx
+const launchOptimistic = rockets.map((elem) => ({
+	country: elem.country,
+	launches: elem.launches + 10,
+}));
+```
+
+## React 中使用 input[type=file] 的问题
+
+```jsx
+if (this.props.webkitdirectory) {
+	var inputEle = ReactDOM.findDOMNode(
+		this.refs.input
+	) as HTMLInputElement;
+
+	inputEle.setAttribute("webkitdirectory", "");
+}
+```
+
+由于`webkitdirectory`不是 w3c 的标准属性，所以你无法在 JSX 中直接声明。
+
+## 模拟安卓桌面滚动效果（粘性滚动）
+
+参考[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type)
+
+```css
+scroll-snap-type: none;
+scroll-snap-type: x;
+scroll-snap-type: y;
+scroll-snap-type: block;
+scroll-snap-type: inline;
+scroll-snap-type: both;
+```
+
+## Markdown 链接变量
+
+```Markdown
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
+available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+
+[homepage]: https://www.contributor-covenant.org
+
+For answers to common questions about this code of conduct, see
+https://www.contributor-covenant.org/faq
+
+```
+
+## 判断当前页面是否存在输入事件
+
+```js
+navigator.scheduling.isInputPending();
+```
+
+这 facebook 官方贡献给 Chromium 的 api, 现在已经列入 W3C 标准(具体解释), 用于判断是否有输入事件(包括: input 框输入事件, 点击事件等).
+
+## PWA 显示类似应用商店的安装提示
