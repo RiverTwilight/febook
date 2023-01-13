@@ -21,7 +21,7 @@ sidebar_position: 0
 
 归根到底，在互联网行业里，技术只是实现业务的一个手段而已，业务上用到的技术不一定是最前沿、最先进的。这也解释了很多程序员为了冲 KPI 而做开源的现象。但是追求技术和恰饭是不冲突的，至少对于笔者来说，这是一种人生追求。
 
-如果读者在阅读过程中对于本书内容有任何疑问、意见或指正，欢迎在 GitHub [提交 issue](https://github.com/RiverTwilight/Fav/issues/new)，或者给我发邮件，我很乐意倾听你们的反馈。我的联系方式如下：
+如果读者在阅读过程中对于本书内容有任何疑问、意见或指正，欢迎在 GitHub [提交 issue](https://github.com/RiverTwilight/febook/issues/new)，或者给我发邮件，我很乐意倾听你们的反馈。我的联系方式如下：
 
 -   邮箱：contact@rene.wang
 -   公众号：@寒枝月
