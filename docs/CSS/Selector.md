@@ -54,6 +54,38 @@ form:has(:focus-visible) div:has(input:not(:focus-visible)) label {
 }
 ```
 
+如果不熟悉伪类、伪元素，容易写出一些冗余的元素、代码。
+
+我们来看几个例子：
+
+```css
+p::first-letter {
+	font-size: 3rem;
+	font-weight: bold;
+	color: red;
+}
+```
+
+上面的代码就是使用伪元素，直接设置每个段落的第一个字母的样式，这样做可以使我们避免不必要的代码重复，尤其在设计精细的文本样式时，伪类和伪元素就显得尤为重要。
+
+接下来我们看一些高级的用法：
+
+```css
+p::before {
+	content: "";
+	display: block;
+	margin-bottom: 10px;
+}
+
+p::after {
+	content: "";
+	display: block;
+	margin-top: 10px;
+}
+```
+
+上面的代码就是使用伪元素，可以为每个段落的头尾设置间距，从而达到很漂亮的视觉效果。
+
 这是一个非常强大的功能，
 
 ## 扩展阅读
