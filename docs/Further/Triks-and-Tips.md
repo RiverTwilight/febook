@@ -68,4 +68,15 @@ navigator.scheduling.isInputPending();
 
 这 facebook 官方贡献给 Chromium 的 api, 现在已经列入 W3C 标准(具体解释), 用于判断是否有输入事件(包括: input 框输入事件, 点击事件等).
 
+## Authenator (2FA) 原理
+
+Authenticator会保存密钥和用户名的信息，并使用共享密钥和当前时间生成每 30 秒更改一次的六位数代码。
+
+云服务通过相同的算法，检查用户输入的代码是否与 Google Authenticator 使用共享密钥和当前时间生成的代码相匹配。
+
+如果代码匹配，则用户被授予访问该服务的权限。
+
+
+![](./images/auth.png)
+
 ## PWA 显示类似应用商店的安装提示
