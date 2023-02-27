@@ -37,3 +37,7 @@ function ListNode(val) {
 ### 树
 
 与前面三种不同，树是一种非线性的数据结构。
+
+扩展阅读：
+
+* [史上最全遍历二叉树详解](https://leetcode.cn/problems/binary-tree-preorder-traversal/solutions/87526/leetcodesuan-fa-xiu-lian-dong-hua-yan-shi-xbian-2/?orderBy=most_votes)
