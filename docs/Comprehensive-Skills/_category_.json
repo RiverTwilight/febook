@@ -1,8 +1,8 @@
 {
 	"label": "综合技能",
-	"position": 5,
+	"position": 7,
 	"link": {
-		"slug": "Internet",
+		"slug": "Comprehensive-Skills",
 		"type": "generated-index"
 	}
 }

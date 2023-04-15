@@ -1,8 +1,8 @@
 {
 	"label": "计算机基础",
-	"position": 4,
+	"position": 0,
 	"link": {
-		"slug": "CS",
+		"slug": "Computer-Fundamentals",
 		"type": "generated-index"
 	}
 }
