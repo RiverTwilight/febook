@@ -82,7 +82,7 @@ Authenticator 会保存密钥和用户名的信息，并使用共享密钥和当
 
 ## 分割 emoji 字符串
 
-由于 emoji 的特殊构成，直接使用 split 方法会出现问题。可以使用浏览器自带的[Intl]()来进行本地化分词。
+由于 emoji 的特殊构成，直接使用 split 方法会出现问题。可以使用浏览器自带的[Intl](https://mozilia.mdn.com)来进行本地化分词。
 
 ```js
 const emojis = "🫣🫵👨‍👨‍👦‍👦";
