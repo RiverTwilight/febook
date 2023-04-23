@@ -99,4 +99,28 @@ const segments = segmenter.segment(emojis);
 console.log(Array.from(segmenter.segment(emojis), (s) => s.segment)); // ['🫣', '🫵', '👨‍👨‍👦‍👦']
 ```
 
+## iframe 的安全用法
+
+使用 sandbox 属性可以保证安全性。
+
+```html
+<iframe
+	srcdoc="{{UNTRUSTED_HTML_HERE}}"
+	sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+	csp="script-src 'none'"
+/>
+```
+
+srcdoc 属性允许你直接把 html 写在属性值当中。例如：
+
+```html
+<iframe
+	srcdoc="<p>Hello, world! This is an inline HTML document.</p>"
+	width="500"
+	height="300"
+></iframe>
+```
+
+值得一提的是，srcdoc 的优先级要比 src 高，这意味着如果二者同时被设置，前者将生效。
+
 ## PWA 显示类似应用商店的安装提示
