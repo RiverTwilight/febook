@@ -4,7 +4,7 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const GITHUB_LINK = "https://github.com/rivertwilight/fav";
+const GITHUB_LINK = "https://github.com/rivertwilight/febook";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
