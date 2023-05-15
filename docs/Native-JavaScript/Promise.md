@@ -1,4 +1,4 @@
-## Promise
+# Promise
 
 ## Promise.race
 
