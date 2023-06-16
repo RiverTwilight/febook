@@ -23,6 +23,8 @@ Function.prototype.call = function (obj, arg) {
 
 ## some
 
+该方法检查数组中是否含有符合条件的元素。
+
 思路：遍历数组，使用回调函数判断，如果有一个满足条件，返回 true，否则返回 false。
 
 ```javascript

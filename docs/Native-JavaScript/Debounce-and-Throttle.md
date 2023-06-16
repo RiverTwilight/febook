@@ -8,8 +8,6 @@
 
 ## 防抖
 
-这是经典的面试题目。
-
 ```javascript
 function debounce(func, delay) {
 	let inDebounce;
