@@ -32,4 +32,10 @@ React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合�
 
 ### 为什么不能在 IF 语句中使用 Hooks？
 
+由于函数组件没有 this，为了能够处理组件内部的状态以及副作用，提供了 Hooks 的方式
+
+### useEffect 和 useLayoutEffect
+
+与 useEffect 用法类似，但是内部的执行函数为同步执行，会阻塞浏览器渲染。
+
 ## 扩展阅读

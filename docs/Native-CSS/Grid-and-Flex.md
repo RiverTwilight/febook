@@ -16,8 +16,8 @@
 ### 项目属性
 
 -   order
--   flex-grow
--   flex-shrink
+-   flex-grow: 当内容超过既定的空间，是否放大
+-   flex-shrink: 当空间不足以展示的时候，是否被压缩
 -   flex-basis
 -   flex
 

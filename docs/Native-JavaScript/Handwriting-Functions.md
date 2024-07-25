@@ -64,6 +64,26 @@ Function.prototype.bind = function (obj, arg) {
 
 思路：遍历数组，使用回调函数计算，返回最终结果。
 
+## Promise.all
+
+将多个 Promise 实例包装成一个 promise 实例。
+
+```js
+Promise.MyAll = function (promises) {
+  let arr = [],
+    count = 0
+  return new Promise((resolve, reject) => {
+    promises.forEach((item, i) => {
+      Promise.resolve(item).then(res => {
+        arr[i] = res
+        count += 1
+        if (count === promises.length) resolve(arr)
+      }, reject)
+    })
+  })
+}
+```
+
 ## 深拷贝
 
 ### 最简单的做法
@@ -107,3 +127,5 @@ function deepClone(source) {
 -   [The seventh way to call a JavaScript function without parentheses](https://portswigger.net/research/the-seventh-way-to-call-a-javascript-function-without-parentheses)
 
 -   [https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g](https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g)
+
+-   [https://juejin.cn/post/7069805387490263047#heading-18](https://juejin.cn/post/7069805387490263047#heading-18)

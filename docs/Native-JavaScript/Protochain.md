@@ -20,6 +20,14 @@ console.log(foo()) // "Hello YGeeker"
 
 首先记住一点：原型链的尽头（root）是 `Object.prototype`。所有对象均从 `Object.prototype` 继承属性。
 
+## 关联知识
+
+有了原型链的知识，我们可以推出很多判断数组的方法：
+
+* `instanceof`
+* `[].constructor === Array`
+* `Object.prototype.toString.call([]) === "[object Array]"`
+
 ## 扩展阅读
 
 * https://github.com/creeperyang/blog/issues/9
