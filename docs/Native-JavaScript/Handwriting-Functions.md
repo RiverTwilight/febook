@@ -40,6 +40,8 @@ Array.prototype.some = function (callback, thisArg) {
 
 ## bind
 
+bind 方法会返回一个新函数，永久绑定参数函数的 this。
+
 思路：使用 apply 实现。
 
 ```javascript
@@ -62,7 +64,43 @@ Function.prototype.bind = function (obj, arg) {
 
 思路：遍历数组，使用回调函数计算，返回最终结果。
 
-## Promise
+## 深拷贝
+
+### 最简单的做法
+
+```js
+JSON.parse(JSON.stringify(obj));
+```
+
+然而，由于 undefined、function、symbol 会在转换过程中被忽略，这种做法存在局限性。
+
+### 高级做法
+
+利用递归的思想，我们可以写出近乎完美的深拷贝。
+
+```js
+function deepClone(source) {
+	const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+	for (let keys in source) {
+		// 遍历目标
+		if (source.hasOwnProperty(keys)) {
+			if (source[keys] && typeof source[keys] === "object") {
+				// 如果值是对象，就递归一下
+				targetObj[keys] = source[keys].constructor === Array ? [] : {};
+				targetObj[keys] = deepClone(source[keys]);
+			} else {
+				// 如果不是，就直接赋值
+				targetObj[keys] = source[keys];
+			}
+		}
+	}
+	return targetObj;
+}
+```
+
+### 取巧做法
+
+你可以使用 `Array.slice` 和 `Array.concat` 实现数组的浅层深拷贝。
 
 ## 扩展阅读
 
