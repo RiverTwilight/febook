@@ -48,6 +48,13 @@ React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合�
 
 首先，没必要缓存所有的值或者函数，React 本身已经做了很好的优化（Fiber）。
 
+其次，useCallback 本质上是 useMemo 的语法糖。也就是说，以下两种写法本质上是一样的：
+
+```js
+React.useCallback(function helloWorld() {}, []);
+React.useMemo(() => function helloWorld() {}, []);
+```
+
 一些最佳实践包括：
 
 -   在一般的自定义 Hook 中，使用 `useCallback`
@@ -81,3 +88,4 @@ function MyComponent() {
 ## 扩展阅读
 
 -   [YouTube](https://www.youtube.com/watch?v=1VVfMVQabx0)
+-   [Blog](https://www.joshwcomeau.com/react/usememo-and-usecallback/#inside-context-providers-8)
