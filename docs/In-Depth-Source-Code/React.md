@@ -40,9 +40,11 @@ React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合�
 
 如果放在 IF 中，那么这个数组长度就会变化（某些 Hook 可能不执行，也可能执行），这就会导致其他 Hook 索引对应错误。
 
-### useEffect 和 useLayoutEffect
+### useEffect 和 useLayoutEffect 的区别？
 
 与 useEffect 用法类似，但是内部的执行函数为同步执行，会阻塞浏览器渲染。
+
+### useMemo 和 useCallback 的区别？各自在什么场景下使用？
 
 ### 如何使用 Hook 实现 componentWillUnmount 方法
 
@@ -70,4 +72,4 @@ function MyComponent() {
 
 ## 扩展阅读
 
-* [YouTube](https://www.youtube.com/watch?v=1VVfMVQabx0)
+-   [YouTube](https://www.youtube.com/watch?v=1VVfMVQabx0)

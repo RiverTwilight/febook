@@ -25,3 +25,9 @@ var script = document.createElement('script');
 script.src = 'https://example.com/data?callback=myCallback';
 document.body.appendChild(script);
 ```
+
+## 服务端解决跨域
+
+响应头添加如下属性即可：
+
+

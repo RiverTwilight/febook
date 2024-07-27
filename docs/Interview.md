@@ -39,6 +39,11 @@ var 是函数级作用域
 
 ## type 和 interface 的区别？
 
-* type 可以表示原始类型，例如 `type Address = string`
-* type 可以表示联合类型，例如 `type Transport = 'Bus' | 'Car' | 'Bike' | 'Walk';`
-* interface 可以自动进行声明合并
+-   type 可以表示原始类型，例如 `type Address = string`
+-   type 可以表示联合类型，例如 `type Transport = 'Bus' | 'Car' | 'Bike' | 'Walk';`
+-   interface 可以自动进行声明合并
+
+## Tailwind 的好处
+
+-   易于维护，易于理解，不需要查看样式表
+-   DX 很好，快速获得样式效果

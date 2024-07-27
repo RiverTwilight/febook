@@ -52,4 +52,29 @@ HTTPS 是 HTTP 协议的安全版本。通过 SSL/TLS 加密，保证数据传�
 -   401: 未授权访问
 -   5xx：表示服务器错误，服务器端处理请求出错
 
-## 知识自测
+## TCP
+
+谈到 TCP 就不得不提起经典的三次握手和四次挥手。
+
+TCP 的连接建立和断开过程通常被称为"三次握手"和"四次挥手"。
+
+### 三次握手（建立连接）：
+
+![TCP](./images/tcp_01.png)
+
+客户端发送 SYN 包到服务器，进入 SYN_SENT 状态。
+服务器收到 SYN 包，回复 SYN+ACK 包，进入 SYN_RECEIVED 状态。
+客户端收到 SYN+ACK 包，回复 ACK 包，进入 ESTABLISHED 状态。服务器收到 ACK 后也进入 ESTABLISHED 状态。
+
+### 四次挥手（断开连接）：
+
+![TCP](./images/tcp_02.png)
+
+客户端发送 FIN 包，进入 FIN_WAIT_1 状态。
+服务器收到 FIN 包，发送 ACK 包，进入 CLOSE_WAIT 状态。
+服务器发送 FIN 包，进入 LAST_ACK 状态。
+客户端收到 FIN 包，发送 ACK 包，进入 TIME_WAIT 状态。服务器收到 ACK 后关闭连接。
+
+## WebSocket
+
+类似于 http，WebSocket 是一种网络协议。它允许服务器与客户端建立双向的持续连接。HTML5 开始提供的一种浏览器与服务器进行全双工通讯的网络技术，属于应用层协议。它基于 TCP 传输协议，并复用 HTTP 的握手通道。

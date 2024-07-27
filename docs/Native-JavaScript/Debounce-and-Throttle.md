@@ -20,6 +20,25 @@ function debounce(func, delay) {
 }
 ```
 
+ts 版本：
+
+```ts
+type Procedure = (...args: any[]) => void;
+
+const debounce = <F extends Procedure>(
+	func: F,
+	timeout: number = 300
+): ((...args: Parameters<F>) => void) => {
+	let timer: NodeJS.Timeout;
+	return (...args: Parameters<F>) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			func.apply(this, args);
+		}, timeout);
+	};
+};
+```
+
 ## 节流
 
 ```javascript
