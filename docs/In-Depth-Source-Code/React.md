@@ -8,7 +8,7 @@ sidebar_position: 0
 
 -   React 本身是一种设计思想，可以用于任何图形界面
 -   React-dom 赋予了 React 在浏览器大展身手的机会
--   React 本身不认识 JSX 写法
+-   React 本身不认识 JSX 写法，需要 Babel 把它转化为原生格式
 
 ## 我们说的 React 包含了哪些子模块？
 
@@ -45,6 +45,14 @@ React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合�
 与 useEffect 用法类似，但是内部的执行函数为同步执行，会阻塞浏览器渲染。
 
 ### useMemo 和 useCallback 的区别？各自在什么场景下使用？
+
+首先，没必要缓存所有的值或者函数，React 本身已经做了很好的优化（Fiber）。
+
+一些最佳实践包括：
+
+-   在一般的自定义 Hook 中，使用 `useCallback`
+-   对于繁重的计算任务，使用 `useMemo`
+-   在 Context Provider 中，使用 `useMemo` 缓存需要提供的值
 
 ### 如何使用 Hook 实现 componentWillUnmount 方法
 

@@ -47,3 +47,40 @@ var 是函数级作用域
 
 -   易于维护，易于理解，不需要查看样式表
 -   DX 很好，快速获得样式效果
+
+## 目测打印结果类
+
+```js
+function ClassA() {
+	this.x = "hello";
+}
+
+ClassA.prototype.x = "world";
+
+const a = new ClassA();
+a.x = "what";
+console.log(a.x); // what
+delete a.x;
+console.log(a.x); // world
+a.x = undefined;
+console.log(a.x); // undefined
+```
+
+```javascript
+function someFunction() {
+	let a = 0;
+	return function () {
+		return a++;
+	};
+}
+
+const f1 = someFunction();
+const f2 = someFunction();
+
+console.log(f1()); // 0
+console.log(f2()); // 0
+
+const f = someFunction();
+console.log(f()); // 0
+console.log(f()); // 1
+```

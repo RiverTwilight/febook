@@ -6,8 +6,63 @@
 
 这并不是一个线性流程，很多部分是不断循环的，并且很多节点也有很多内部子流程。
 
-## 容器
+## 模块化
 
-Docker
+-   JavaScript 模块化：使用 ES6 模块、CommonJS 等。
+-   CSS 模块化：使用 CSS Modules、Sass、Less 等。
+-   组件化：如 React、Vue 的组件系统。
+
+## 自动化构建
+
+    - 任务运行器：如 npm scripts、Gulp。
+    - 打包工具：如 Webpack、Rollup、Vite。
+    - 编译/转译：Babel 用于 JavaScript，PostCSS 用于 CSS。
+
+## 代码规范和质量控制
+
+    - 代码格式化：Prettier。
+    - 代码检查：ESLint、Stylelint。
+    - 类型检查：TypeScript。
+
+## 版本控制
+
+    - 使用 Git 进行代码管理。
+    - 分支管理策略，如 GitFlow。
+
+## 持续集成/持续部署(CI/CD)
+
+    - 自动化测试：单元测试、集成测试、E2E 测试。
+    - 自动化部署：如 Jenkins、GitLab CI。
+
+## 性能优化
+
+    - 代码分割和懒加载。
+    - 资源压缩和合并。
+    - 缓存策略。
+
+## 开发体验优化
+
+    - 热模块替换(HMR)。
+    - 开发服务器。
+    - 调试工具。
+
+## 项目脚手架
+
+    - 快速生成项目结构：如 Create React App、Vue CLI。
+
+## 依赖管理
+
+目前主流的依赖管理工具有：
+
+-   NPM
+-   Yarn
+-   pnpm
+
+## 文档管理
+
+    - 自动生成文档：如 JSDoc。
+    - 组件文档：如 Storybook。
+
+前端工程化是一个持续发展的领域，目标是让前端开发更加高效、可维护和可扩展。它需要根据项目需求和团队情况来选择合适的工具和方法。
 
 ## 扩展阅读
