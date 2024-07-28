@@ -22,7 +22,9 @@ React 的官方仓库是一个 monorepo，里面包含了很多子模块。
 
 Fiber 是 React 的重新实现，它将组件的渲染拆分成可变更的阶段，使得 React 可以有更多的控制权，更好地支持动画和更复杂的 UI 组件，以及更好地支持异步渲染。Fiber 还可以把 React 应用的渲染过程拆分成更小的单元，从而改善性能。
 
-简单来讲，Fiber 就是一个对象，里面可以存储各种各样的信息。
+简单来讲，Fiber 就是一个对象，里面可以存储各种各样的信息。以类似树的方式组织。
+
+每一个节点其实代表了一个 Work。实际运行中，React 会以**深度优先**的方式逐步完成每个节点代表的任务。
 
 ## Diff
 
@@ -43,6 +45,13 @@ React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合�
 ### useEffect 和 useLayoutEffect 的区别？
 
 与 useEffect 用法类似，但是内部的执行函数为同步执行，会阻塞浏览器渲染。
+
+具体执行时机为：
+
+1. React 更新 DOM
+2. React 调用 useLayoutEffect
+3. 浏览器绘制屏幕
+4. React 调用 useEffect
 
 ### useMemo 和 useCallback 的区别？各自在什么场景下使用？
 
@@ -78,6 +87,10 @@ function MyComponent() {
 	return <div>My Component</div>;
 }
 ```
+
+## 子组件没有任何的 props，父组件在渲染的时候，子组件会跟着渲染吗
+
+子组件默认情况下也会跟着重新渲染。
 
 ### 为什么推崇函数式组件
 

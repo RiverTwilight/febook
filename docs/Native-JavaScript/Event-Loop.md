@@ -61,6 +61,15 @@ js 会不断执行任务队列（事实上，就是一个栈结构，最早添�
 
 有了上面的知识，我们考虑这样一个需求：实现一个`setInterval`函数，它的功能和`setInterval`一样，但是不使用`setInterval`。
 
+```js
+function cusomizeInterval(fn, interval) {
+	setTimeout(function () {
+		fn();
+		setTimeout(arguments.callee, interval);
+	}, interval);
+}
+```
+
 ## 面试题
 
 来看一道经典的事件循环面试题（题目来源于网络）：
@@ -118,7 +127,7 @@ setTimeOut2
 
 你可能会疑问：第一个`setTimeout`被执行的时候，微任务不是空的吗？为什么不立刻执行`setTimeout`里面的内容呢？
 
-文章开头已经提到，`settimeout`可以用于延迟某个函数的执行。即使设置的delay为0，javascript的解释器也会先执行完全部代码，然后根据形成的微任务队列，执行微任务，最后执行宏任务。
+文章开头已经提到，`settimeout`可以用于延迟某个函数的执行。即使设置的 delay 为 0，javascript 的解释器也会先执行完全部代码，然后根据形成的微任务队列，执行微任务，最后执行宏任务。
 
 又由于`setTimeout`本身是宏任务，所以只有等待前面的三个微任务（then1, queueMicrotask1, then3）执行完毕后才会执行。
 

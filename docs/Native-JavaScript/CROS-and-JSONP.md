@@ -37,3 +37,7 @@ iframe + location.hash 或者 iframe + window.name，在父文档中设置 ifram
 ## 服务端实现跨域
 
 响应头添加如下属性即可：
+
+```
+Access-Control-Allow-Origin: https://foo.example
+```
