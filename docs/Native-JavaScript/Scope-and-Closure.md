@@ -44,34 +44,30 @@ Wed Dec 14 2022 16:00:37 GMT+0800 (中国标准时间) 5
 
 看一个真实的业务代码
 
-````tsx
-	const [history, setHistory] = useState([]);
-	const [input, setInput] = useInput("");
+```tsx
+const [history, setHistory] = useState([]);
+const [input, setInput] = useInput("");
 
-	const handleSend = () => {
+const handleSend = () => {
+	setHistory((prevHistory) => [
+		...prevHistory,
+		{
+			type: "human",
+			text: input,
+			date: new Date(),
+		},
+	]);
 
+	axios.post("/api/apps/openai" /**... */).then((res) => {
 		setHistory((prevHistory) => [
 			...prevHistory,
 			{
-				type: "human",
-				text: input,
+				type: "bot",
+				text: res.data.choices[0].text,
 				date: new Date(),
 			},
 		]);
-
-		axios
-			.post("/api/apps/openai", /**... */)
-			.then((res) => {
-				setHistory((prevHistory) => [
-					...prevHistory,
-					{
-						type: "bot",
-						text: res.data.choices[0].text,
-						date: new Date(),
-					},
-				]);
-				setHistory(history); // 注意这一行
-			});
-	};
-	```
-````
+		setHistory(history); // 注意这一行
+	});
+};
+```

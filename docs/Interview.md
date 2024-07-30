@@ -10,7 +10,7 @@ JavaScript 使用自动垃圾收集机制，这意味着开发者不需要手动
 
 主要有两种算法：
 
--   引用计数: 计算每个对象的引用次数，次数变为 0 即可被安全移除
+-   引用计数: 计算每个对象的引用次数，次数变为 0 即可被安全移除。但是当出现循环引用的时候，会导致内存泄露，所以引用计数法后来被淘汰
 -   标记-清除: 从"根"(全局对象)开始，标记所有可以到达的对象。其余的被视为可清除。这是现代浏览器主要采用的方法
 
 ## let var const 有什么区别
@@ -33,9 +33,17 @@ var 是函数级作用域
 
 -   http2 允许一个 TCP 连接内并行多个请求，http1.1 只允许一个
 -   http2 允许服务器主动向客户端推送资源
--   http2 采用了头部压缩，http1 传输纯文本
+-   http2 采用了头部压缩（HPACK），http1 传输纯文本
 
 优势：更快、网络利用率更低，更适合移动端用户。
+
+## http3 相较 http2 有什么变化？
+
+-   使用 QUIC (快速 UDP 互联网连接)，这是基于 UDP 的协议
+-   通常只需一次往返就可以建立加密连接，大大减少了延迟
+-   加密是强制的，安全性更高（http2 TLS 可选）
+-   使用 QPACK，这是专为 QUIC 设计的头部压缩算法
+-   HTTP/3 支持连接迁移，允许客户端在网络切换时保持连接
 
 ## JWT 鉴权如何工作？
 
@@ -101,3 +109,35 @@ console.log(f()); // 1
 -   使得错误追踪和调试变得更加容易
 
 值得一提的是，单线程模型下，为了不阻塞主线程，JavaScript 发展出了回调、Promise、async/await 等异步编程模式。
+
+## addEventListener 方法的第三个参数了解过吗？
+
+默认为 false，是否开启事件捕获。
+
+事件监听的顺序为先捕获后冒泡，从外层到内层。
+
+```js
+let outer = document.getElementById("outer");
+let inner = document.getElementById("inner");
+
+outer.addEventListener(
+	"click",
+	function () {
+		console.log("外层元素被点击");
+	},
+	true
+); // 使用捕获
+
+inner.addEventListener(
+	"click",
+	function () {
+		console.log("内层元素被点击");
+	},
+	false
+); // 使用冒泡（默认）
+```
+
+## 面经集锦
+
+-   [字节 AILab](https://www.nowcoder.com/feed/main/detail/0794dc3ac487485e8c80cb4dc8e249b5?sourceSSR=search)
+-   [字节懂车帝](https://juejin.cn/post/7351726029324042267)

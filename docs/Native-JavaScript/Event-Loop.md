@@ -48,7 +48,7 @@ js 会不断执行任务队列（事实上，就是一个栈结构，最早添�
 
 重点来了，js 还对任务进行了分类，在浏览器中，包括：
 
--   宏任务：一般的代码，包括通过`setTimeout`注册的回调函数。会通过一个栈结构维护。
+-   宏任务：一般的代码，包括通过`setTimeout` `setInterval` `setImeediate` 注册的回调函数。会通过一个栈结构维护。
 -   微任务：通常是回调函数，包括传入`then/catch/finally`的函数。特别地，`queueMicrotask(func)`这个内置方法可以添加任意函数为微任务。
 
 每个宏任务执行完成后，js 会立即执行微任务队列直至微任务清空。概括的讲，**只有在微任务队列为空时，宏任务才会被执行。**
@@ -69,6 +69,17 @@ function cusomizeInterval(fn, interval) {
 	}, interval);
 }
 ```
+
+## NodeJS
+
+Node 环境下的事件循环与浏览器有很多不同。
+
+1. timers
+2. pending callbacks
+3. idle, prepare
+4. poll
+5. check
+6. close callbacks
 
 ## 面试题
 
@@ -133,6 +144,6 @@ setTimeOut2
 
 ## 扩展阅读
 
-[Event loop: microtasks and macrotasks](https://javascript.info/event-loop)
-
-[js 事件循环详解\_卖菜的小白的博客-CSDN 博客\_js 事件循环](https://blog.csdn.net/weixin_47450807/article/details/123131474)
+-   [Event loop: microtasks and macrotasks](https://javascript.info/event-loop)
+-   [js 事件循环详解\_卖菜的小白的博客-CSDN 博客\_js 事件循环](https://blog.csdn.net/weixin_47450807/article/details/123131474)
+-   [](https://www.youtube.com/watch?v=8aGhZQkoFbQ)

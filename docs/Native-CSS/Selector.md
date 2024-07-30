@@ -54,6 +54,13 @@ form:has(:focus-visible) div:has(input:not(:focus-visible)) label {
 }
 ```
 
+其中，第二个选择器会匹配到满足以下所有条件的 label 元素：
+
+-   位于一个表单（form）内
+-   这个表单中有至少一个元素具有可见焦点
+-   label 位于一个 div 内
+-   这个 div 包含至少一个没有可见焦点的 input 元素
+
 如果不熟悉伪类、伪元素，容易写出一些冗余的元素、代码。
 
 我们来看几个例子：
