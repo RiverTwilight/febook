@@ -14,3 +14,13 @@
 渲染层和逻辑层由两个线程管理，逻辑层采用 JSCore 执行 js 代码，渲染层使用 webview 进行渲染。小程序有多个页面，所以渲染层存在多个 webview。
 
 两个线程之间由 Native 层之间统一处理，无论是线程之间的通信，还是数据的传递，网络请求都是由 Native 层做转发。
+
+双线程的好处不仅仅是一分为二而已，还有强大的 Native 层做背后支撑。Native 层除了做一些资源的动态注入，还负责着很多的事情，请求的转发，离线存储，组件渲染等等。
+
+## Good to know
+
+-   由于实现原因与 iOS JavaScriptCore 限制，iOS 环境下的 Promise 是一个使用 setTimeout 模拟的 Polyfill。这意味
+
+## 了解更多
+
+-   [小程序开发文档](https://juejin.cn/post/6976805521407868958)
