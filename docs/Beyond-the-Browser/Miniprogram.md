@@ -7,7 +7,7 @@
 -   平台原生 IDE（例如微信开发者工具）
 -   跨端开发框架：例如 Taro、uniapp
 
-## 与传统 web 比较
+## 整体架构
 
 小程序与传统 web 单线程架构相比，是双线程架构。
 
@@ -17,10 +17,23 @@
 
 双线程的好处不仅仅是一分为二而已，还有强大的 Native 层做背后支撑。Native 层除了做一些资源的动态注入，还负责着很多的事情，请求的转发，离线存储，组件渲染等等。
 
-## Good to know
+:::tip[Good to know]
 
--   由于实现原因与 iOS JavaScriptCore 限制，iOS 环境下的 Promise 是一个使用 setTimeout 模拟的 Polyfill。这意味
+由于实现原因与 iOS JavaScriptCore 限制，iOS 环境下的 Promise 是一个使用 setTimeout 模拟的 Polyfill。这意味
+
+:::
+
+### 小程序的优点
+
+-   依赖于微信，可以快速获取用户
+
+### 小程序的劣势
+
+-   小程序的性能不如原生 APP
+-   在 iOS 上，小程序不能独立运行，需要依赖宿主环境
+
+## 跨端小程序框架是如何实现的
 
 ## 了解更多
 
--   [小程序开发文档](https://juejin.cn/post/6976805521407868958)
+-   [小程序架构解析](https://juejin.cn/post/6976805521407868958)
