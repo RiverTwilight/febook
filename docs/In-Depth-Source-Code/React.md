@@ -26,6 +26,12 @@ Fiber 是 React 的重新实现，它将组件的渲染拆分成可变更的阶�
 
 每一个节点其实代表了一个 Work。实际运行中，React 会以**深度优先**的方式逐步完成每个节点代表的任务。
 
+:::tip[Good to know]
+
+React 中的 UI 其实质是树在时间轴上的积分。
+
+:::
+
 ## Diff
 
 React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心 Virtual DOM 背后的运作原理，因为 React diff 会帮助我们计算出 Virtual DOM 中真正变化的部分，并只针对该部分进行实际 DOM 操作，而非重新渲染整个页面，从而保证了每次操作更新后页面的高效渲染，因此 Virtual DOM 与 diff 是保证 React 性能口碑的幕后推手。
@@ -45,6 +51,8 @@ React 19 引入了新的并发模式，使得 React 可以更好地处理并发�
 在 React 内部，所有的 Hook 信息可以简单的理解为是在一个数组内维护的，例如 useState 的值，useEffect 的依赖值。每个 Hook 都有一个索引，在触发的时候去对应位置存储相关信息。
 
 如果放在 IF 中，那么这个数组长度就会变化（某些 Hook 可能不执行，也可能执行），这就会导致其他 Hook 索引对应错误。
+
+同理，Hook 中也不能提前 return，或者使用 async 函数。
 
 ### useEffect 和 useLayoutEffect 的区别？
 
