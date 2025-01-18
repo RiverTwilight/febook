@@ -22,22 +22,53 @@ sidebar_position: 3
 
 ```javascript
 function ListNode(val) {
-  this.val = val;
-  this.next = null;
+	this.val = val;
+	this.next = null;
 }
-
 ```
 
 ### 栈
 
 栈是一种先进后出的数据结构。
 
+```javascript
+function Stack() {
+	this.items = [];
+}
+
+Stack.prototype.push = function (item) {
+	this.items.push(item);
+};
+
+Stack.prototype.pop = function () {
+	return this.items.pop();
+};
+
+Stack.prototype.isEmpty = function () {
+	return this.items.length === 0;
+};
+```
+
+例如，我们常用的路由库，其背后就是栈结构实现的。
+
 ### 队列
+
+```javascript
+
+```
 
 ### 树
 
 与前面三种不同，树是一种非线性的数据结构。
 
+```javascript
+function TreeNode(val) {
+	this.val = val;
+	this.left = null;
+	this.right = null;
+}
+```
+
 扩展阅读：
 
-* [史上最全遍历二叉树详解](https://leetcode.cn/problems/binary-tree-preorder-traversal/solutions/87526/leetcodesuan-fa-xiu-lian-dong-hua-yan-shi-xbian-2/?orderBy=most_votes)
+-   [史上最全遍历二叉树详解](https://leetcode.cn/problems/binary-tree-preorder-traversal/solutions/87526/leetcodesuan-fa-xiu-lian-dong-hua-yan-shi-xbian-2/?orderBy=most_votes)

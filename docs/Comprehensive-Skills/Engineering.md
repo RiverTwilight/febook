@@ -1,5 +1,7 @@
 # 工程化
 
+工程化是前端开发中非常重要的一部分，它可以帮助我们更好地管理项目，提高开发效率。它没有严格的标准，但是有一些通用的规范和最佳实践。
+
 ## 工程化开发和传统开发有什么区别？
 
 笔者认为，工程化是**随着前端应用规模逐渐庞大，由开发者不断实践总结出来的，将大型应用模块化，确保持续交付、稳定性和可扩展性的一套工作流程。**
@@ -14,41 +16,35 @@
 
 ## 自动化构建
 
-    - 任务运行器：如 npm scripts、Gulp。
-    - 打包工具：如 Webpack、Rollup、Vite。
-    - 编译/转译：Babel 用于 JavaScript，PostCSS 用于 CSS。
+-   任务运行器：如 npm scripts、Gulp。
+-   打包工具：如 Webpack、Rollup、Vite。
+-   编译/转译：Babel 用于 JavaScript，PostCSS 用于 CSS。
 
 ## 代码规范和质量控制
 
-    - 代码格式化：Prettier。
-    - 代码检查：ESLint、Stylelint。
-    - 类型检查：TypeScript。
+-   代码格式化：Prettier、Biome。
+-   代码检查：ESLint、Stylelint。
+-   类型检查：TypeScript。
 
 ## 版本控制
 
-    - 使用 Git 进行代码管理。
-    - 分支管理策略，如 GitFlow。
+-   使用 Git 进行代码管理。
+-   分支管理策略，如 GitFlow。
 
 ## 持续集成/持续部署(CI/CD)
 
-    - 自动化测试：单元测试、集成测试、E2E 测试。
-    - 自动化部署：如 Jenkins、GitLab CI。
-
-## 性能优化
-
-    - 代码分割和懒加载。
-    - 资源压缩和合并。
-    - 缓存策略。
+-   自动化测试：单元测试、集成测试、E2E 测试。
+-   自动化部署：如 Jenkins、GitLab CI。
 
 ## 开发体验优化
 
-    - 热模块替换(HMR)。
-    - 开发服务器。
-    - 调试工具。
+-   热模块替换(HMR)。
+-   开发服务器。
+-   调试工具。
 
 ## 项目脚手架
 
-    - 快速生成项目结构：如 Create React App、Vue CLI。
+-   快速生成项目结构：如 Create React App、Vue CLI。
 
 ## 依赖管理
 
