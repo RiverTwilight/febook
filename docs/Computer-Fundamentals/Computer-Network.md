@@ -78,3 +78,16 @@ TCP 的连接建立和断开过程通常被称为"三次握手"和"四次挥手"
 ## WebSocket
 
 类似于 http，WebSocket 是一种网络协议。它允许服务器与客户端建立双向的持续连接。HTML5 开始提供的一种浏览器与服务器进行全双工通讯的网络技术，属于应用层协议。它基于 TCP 传输协议，并复用 HTTP 的握手通道。
+
+```javascript
+const ws = new WebSocket("ws://example.com/socket");
+ws.onopen = () => {
+	console.log("WebSocket 连接已打开");
+};
+ws.onmessage = (event) => {
+	console.log("收到消息:", event.data);
+};
+ws.onclose = () => {
+	console.log("WebSocket 连接已关闭");
+};
+```

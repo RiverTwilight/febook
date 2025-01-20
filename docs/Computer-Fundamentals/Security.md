@@ -55,14 +55,20 @@ keywords:
 -   `Path`：限制 Cookie 在特定路径下可用
 
 :::tip[注意]
+
 HttpOnly Cookie 虽然无法被 JavaScript 访问，但仍会随着 HTTP 请求自动发送到服务器。这对于防御 XSS 攻击特别有效，因为即使攻击者注入了恶意脚本，也无法窃取这些 Cookie。
+
 :::
 
 ## CSP
 
 CSP 是 Content Security Policy 的缩写，是一种安全策略，用于防止跨站脚本攻击（XSS）和数据注入攻击。
 
-CSP 通过设置 HTTP 头来告诉浏览器哪些内容是安全的，哪些是不安全的。
+CSP 通过设置 HTTP 头来告诉浏览器哪些内容是安全的，哪些是不安全的。例如：
+
+```http
+Content-Security-Policy: default-src 'self'; script-src 'self' https://example.com;
+```
 
 ## CORS
 
