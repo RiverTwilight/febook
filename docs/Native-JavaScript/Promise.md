@@ -1,3 +1,8 @@
+---
+description: 详细讲解 Promise 的用法，你将掌握 Promise 的基本概念和常用技巧，为更复杂的 JS 应用打下坚实基础。
+keywords: [Promise, JS, 异步, 异步编程, 前端面试题, 编程能力提升]
+---
+
 # Promise
 
 Promise 的三种状态：
@@ -6,7 +11,7 @@ Promise 的三种状态：
 -   fulfilled：成功状态，表示 Promise 成功执行完成。
 -   rejected：拒绝状态，表示 Promise 执行被拒绝，也就是失败。
 
-Promise 的状态，只可能是其中一种状态，从进行中变为成功或失败状态之后，状态就固定了，不会再发生改变。
+Promise 的状态，只可能是其中一种状态，从进行中变为成功或失败状态之后，状态就固定了，**不会再发生改变**。
 
 ## Promise.race
 

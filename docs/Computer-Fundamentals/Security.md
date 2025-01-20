@@ -115,3 +115,5 @@ XSS 是 Cross-Site Scripting 的缩写，是一种攻击方法，用于在网页
     -   对于非简单请求，先发送预检请求(OPTIONS)验证
 
 ## 了解更多
+
+-   在 [冷门技巧 & 疑难杂症](../Beyond-the-Browser/Triks-and-Tips.md#iframe-的安全用法) 一章中，介绍了 iframe 的安全用法。

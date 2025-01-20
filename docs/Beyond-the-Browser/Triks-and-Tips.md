@@ -1,3 +1,8 @@
+---
+description: 冷门技巧 & 疑难杂症
+keywords: [冷门技巧, 疑难杂症, 前端开发]
+---
+
 # 冷门技巧 & 疑难杂症
 
 ## 阻止浏览器加载 favicon
@@ -74,7 +79,7 @@ navigator.scheduling.isInputPending();
 
 Authenticator 会保存密钥和用户名的信息，并使用共享密钥和当前时间生成每 30 秒更改一次的六位数代码。
 
-云服务通过相同的算法，检查用户输入的代码是否与 Google Authenticator 使用共享密钥和当前时间生成的代码相匹配。
+云服务通过**相同的算法**，检查用户输入的代码是否与 Google Authenticator 使用共享密钥和当前时间生成的代码相匹配。
 
 如果代码匹配，则用户被授予访问该服务的权限。
 
@@ -101,7 +106,12 @@ console.log(Array.from(segmenter.segment(emojis), (s) => s.segment)); // ['🫣'
 
 ## iframe 的安全用法
 
-使用 sandbox 属性可以保证安全性。
+使用 sandbox 属性可以保证安全性。例如，下面的代码做了如下限制：
+
+-   允许弹出窗口
+-   允许弹出窗口逃逸
+-   允许同源策略
+-   不允许执行脚本
 
 ```html
 <iframe
@@ -121,6 +131,6 @@ srcdoc 属性允许你直接把 html 写在属性值当中。例如：
 ></iframe>
 ```
 
-值得一提的是，srcdoc 的优先级要比 src 高，这意味着如果二者同时被设置，前者将生效。
+值得一提的是，**srcdoc 的优先级要比 src 高**，这意味着如果二者同时被设置，前者将生效。
 
 ## PWA 显示类似应用商店的安装提示

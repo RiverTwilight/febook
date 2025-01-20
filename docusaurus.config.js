@@ -95,19 +95,6 @@ const config = {
 				style: "dark",
 				links: [
 					{
-						title: "More",
-						items: [
-							{
-								label: "Blog",
-								to: "https://www.rene.wang",
-							},
-							{
-								label: "GitHub",
-								href: GITHUB_LINK,
-							},
-						],
-					},
-					{
 						title: "Product",
 						items: [
 							{
@@ -121,6 +108,23 @@ const config = {
 							{
 								label: "Geekits",
 								href: "https://www.ygeeker.com.cn/geekits",
+							},
+						],
+					},
+					{
+						title: "About",
+						items: [
+							{
+								label: "YGeeker",
+								href: "https://www.ygeeker.com.cn",
+							},
+							{
+								label: "Author",
+								href: "https://www.rene.wang",
+							},
+							{
+								label: "GitHub",
+								href: GITHUB_LINK,
 							},
 						],
 					},

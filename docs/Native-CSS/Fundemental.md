@@ -1,4 +1,17 @@
 ---
+description: 详细讲解CSS基础知识，包括CSS关键字、盒模型、隐藏元素的三种方法、定位方法（position属性）、BFC等。通过本文的学习，你将掌握CSS的基本概念和常用技巧，为更复杂的CSS应用打下坚实基础。
+keywords:
+    [
+        CSS基础,
+        CSS关键字,
+        盒模型,
+        隐藏元素,
+        定位方法,
+        BFC,
+        CSS进阶,
+        前端面试题,
+        编程能力提升,
+    ]
 sidebar_position: 0
 ---
 
@@ -116,4 +129,3 @@ BFC：Block Formatting Context（块级格式化上下文），是一个**独立
 	<div style="margin-top: 30px;">第二个 div</div>
 </div>
 ```
-

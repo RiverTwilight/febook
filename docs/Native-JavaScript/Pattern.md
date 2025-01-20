@@ -1,8 +1,23 @@
+---
+description: 详细讲解 JS 设计模式，你将掌握 JS 设计模式的基本概念和常用技巧，为更复杂的 JS 应用打下坚实基础。
+keywords: [JS设计模式, JS, 设计模式, 前端面试题, 编程能力提升]
+---
+
 # 设计模式
 
 ## 工厂模式
 
 工厂模式是一种创建型设计模式，它提供了一种创建对象的方式，而无需指定具体的类。工厂模式通常用于创建复杂对象，这些对象需要经过一系列的初始化步骤。
+
+```javascript
+function createObject(type) {
+	if (type === "A") {
+		return new A();
+	} else if (type === "B") {
+		return new B();
+	}
+}
+```
 
 ## 单例模式
 
