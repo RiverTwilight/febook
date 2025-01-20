@@ -36,7 +36,7 @@ const config = {
 			({
 				gtag: {
 					trackingID: "G-E0QFPVT63J",
-					anonymizeIP: true
+					anonymizeIP: true,
 				},
 				docs: {
 					routeBasePath: "/",
@@ -50,6 +50,20 @@ const config = {
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
 				},
+				sitemap: {
+					lastmod: "date",
+					changefreq: "weekly",
+					priority: 0.5,
+					ignorePatterns: ["/tags/**"],
+					filename: "sitemap.xml",
+					createSitemapItems: async (params) => {
+						const { defaultCreateSitemapItems, ...rest } = params;
+						const items = await defaultCreateSitemapItems(rest);
+						return items.filter(
+							(item) => !item.url.includes("/page/")
+						);
+					},
+				},
 			}),
 		],
 	],
@@ -60,7 +74,7 @@ const config = {
 			navbar: {
 				title: "前端沉淀小册",
 				logo: {
-					alt: "My Site Logo",
+					alt: "FE Book Logo",
 					src: "icons/icon-192.png",
 				},
 				items: [
@@ -90,6 +104,23 @@ const config = {
 							{
 								label: "GitHub",
 								href: GITHUB_LINK,
+							},
+						],
+					},
+					{
+						title: "Product",
+						items: [
+							{
+								label: "ClipMemo",
+								to: "https://www.ygeeker.com.cn/clipmemo",
+							},
+							{
+								label: "FlowFerry",
+								href: "https://www.ygeeker.com.cn/flowferry",
+							},
+							{
+								label: "Geekits",
+								href: "https://www.ygeeker.com.cn/geekits",
 							},
 						],
 					},

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+description: 详细讲解JavaScript常用原生函数的手写实现，包括call、bind、some、instanceof、reduce等。通过循序渐进的练习，帮助你深入理解JavaScript核心概念和设计思想。
+keywords: [JavaScript手写函数, 原生函数实现, call实现, bind实现, Promise实现, 深拷贝实现, JavaScript进阶, 前端面试题, 编程能力提升]
 ---
 
 # 函数手写
@@ -157,7 +159,5 @@ function deepClone(source) {
 ## 扩展阅读
 
 -   [The seventh way to call a JavaScript function without parentheses](https://portswigger.net/research/the-seventh-way-to-call-a-javascript-function-without-parentheses)
-
 -   [https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g](https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g)
-
 -   [https://juejin.cn/post/7069805387490263047#heading-18](https://juejin.cn/post/7069805387490263047#heading-18)
