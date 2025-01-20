@@ -1,7 +1,18 @@
 ---
 sidebar_position: 1
 description: 详细讲解JavaScript常用原生函数的手写实现，包括call、bind、some、instanceof、reduce等。通过循序渐进的练习，帮助你深入理解JavaScript核心概念和设计思想。
-keywords: [JavaScript手写函数, 原生函数实现, call实现, bind实现, Promise实现, 深拷贝实现, JavaScript进阶, 前端面试题, 编程能力提升]
+keywords:
+    [
+        JavaScript手写函数,
+        原生函数实现,
+        call实现,
+        bind实现,
+        Promise实现,
+        深拷贝实现,
+        JavaScript进阶,
+        前端面试题,
+        编程能力提升,
+    ]
 ---
 
 # 函数手写
@@ -9,9 +20,9 @@ keywords: [JavaScript手写函数, 原生函数实现, call实现, bind实现, P
 本文介绍一些原生函数的手写方案，难度逐渐增加。建议先自己思考，最终的目标是能**全部默写出来**。这些练习的目的是：
 
 -   提高编程抽象能力
--   理解 Javascript 设计思想
+-   理解 JavaScript 设计思想
 
-事实上，如果你真的理解了这些函数，那么你已经理解了 Javascript 的精髓。
+事实上，如果你真的理解了这些函数，那么你已经理解了 JavaScript 的精髓。
 
 ## call
 
@@ -24,6 +35,16 @@ Function.prototype.call = function (obj, arg) {
 	return context.apply(obj, arg);
 };
 ```
+
+:::tip[思考]
+
+为什么不直接使用 slice 方法？
+
+是因为 `arguments` 是一个类数组对象（array-like object），而不是真正的数组。它虽然有 length 属性和索引元素，但是并没有数组的方法如 slice。因此我们需要借用 Array.prototype.slice 通过 call 方法来将类数组转换为真正的数组。
+
+这也是为什么我们写 `Array.prototype.slice.call(arguments, 1)` 而不是直接写 `arguments.slice(1)`。
+
+:::
 
 ## some
 
@@ -41,6 +62,18 @@ Array.prototype.some = function (callback, thisArg) {
 	return false;
 };
 ```
+
+:::tip[思考]
+
+为什么要使用 `callback.call(thisArg, this[i], i, this)` 而不是 `callback(this[i], i, this)`？
+
+这是因为我们需要确保回调函数在正确的上下文中执行。使用 `call` 方法可以：
+
+1. 明确设置回调函数内部的 `this` 值为 `thisArg`
+2. 保持与原生 `Array.prototype.some()` 的行为一致
+3. 允许调用者通过 `thisArg` 参数指定回调函数执行时的上下文
+
+:::
 
 ## bind
 

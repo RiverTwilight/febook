@@ -17,7 +17,23 @@ sidebar_position: 0
 JS 数据类型分为两大类：
 
 -   基本数据类型：String, Number, Boolean, Null, Undefined, Symbol
--   引用数据类型：Object
+-   引用数据类型：Object, Array, Function, RegExp, Date, Error
+
+### 基本数据类型
+
+基本数据类型是按值访问的，这意味着在将一个基本类型的值赋给另一个变量时，会创建一个新的值副本。
+
+### 引用数据类型
+
+而引用类型存储的是对象的引用，当把一个引用类型的值赋给另一个变量时，实际上是**复制了这个引用**，两个变量最终指向内存中的同一个对象。
+
+当比较两个引用类型的值时，**比较的是它们的引用（内存地址），而不是它们的内容**。例如：
+
+```javascript
+const a = { name: "Rene" };
+const b = { name: "Rene" };
+console.log(a === b); // false
+```
 
 ## 事件委托
 
