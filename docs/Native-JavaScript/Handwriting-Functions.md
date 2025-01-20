@@ -9,6 +9,8 @@ sidebar_position: 1
 -   提高编程抽象能力
 -   理解 Javascript 设计思想
 
+事实上，如果你真的理解了这些函数，那么你已经理解了 Javascript 的精髓。
+
 ## call
 
 思路：使用 apply 实现。
@@ -60,9 +62,39 @@ Function.prototype.bind = function (obj, arg) {
 };
 ```
 
+## instanceof
+
+思路：遍历原型链，判断是否存在。欲了解更多，请阅读 [Protochain](./Protochain.md)。
+
+```javascript
+function instanceof(a, b) {
+    // 获取对象的原型
+    let proto = Object.getPrototypeOf(a);
+    // 获取构造函数的 prototype 对象
+    let prototype = b.prototype;
+
+    // 判断构造函数的 prototype 对象是否在对象的原型链上
+    while (true) {
+        if (!proto) return false;
+        if (proto === prototype) return true;
+        proto = Object.getPrototypeOf(proto);
+    }
+}
+```
+
 ## reduce
 
 思路：遍历数组，使用回调函数计算，返回最终结果。
+
+```js
+Array.prototype.reduce = function (callback, initialValue) {
+	let accumulator = initialValue;
+	for (let i = 0; i < this.length; i++) {
+		accumulator = callback(accumulator, this[i], i, this);
+	}
+	return accumulator;
+};
+```
 
 ## Promise.all
 

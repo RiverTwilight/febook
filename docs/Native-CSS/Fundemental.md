@@ -6,6 +6,12 @@ sidebar_position: 0
 
 长期使用 css-in-js 和各种打包器开发，往往容易忘记基础知识。除了阅读本文，读者也可以完整阅读[MDN 的文档](https://developer.mozilla.org/en-US/docs/Web/CSS)，相信一定会有所收获。
 
+:::tip
+
+不要觉得 AI 可以帮你解决基础的 CSS 问题。事实上，越是依赖 CSS 基础的场景，AI 越难给出正确的答案。
+
+:::
+
 ## CSS 关键字
 
 -   inherit: 继承父元素的值，部分属性不支持继承，例如`border`
@@ -43,11 +49,13 @@ h3 {
 
 ![Untitled](%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA%2043ba708be2de493b9269462f06b4eecd/Untitled.png)
 
-宽度和高度属性包括内容、padding 和 border，但不包括边距。
+宽度和高度属性只包括内容，不包括 padding 和 border。
 
 IE 盒模型，使用`box-sizing: border-box` 规定：
 
 ![Untitled](%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA%2043ba708be2de493b9269462f06b4eecd/Untitled%201.png)
+
+宽度和高度属性包括内容、padding 和 border，但不包括边距。
 
 ## 隐藏元素的三种方法
 
@@ -69,7 +77,7 @@ IE 盒模型，使用`box-sizing: border-box` 规定：
 
 ## BFC
 
-BFC：Block Formatting Context（块级格式化上下文），是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
+BFC：Block Formatting Context（块级格式化上下文），是一个**独立的渲染区域**，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
 
 存在以下几种方案可创建 BFC：
 
@@ -79,18 +87,33 @@ BFC：Block Formatting Context（块级格式化上下文），是一个独立�
 -   overflow 的值不为 visible （ visiable 是默认值。内容不会被修剪，会呈现在元素框之外）
 -   除此之外，根元素， HTML 元素本身就是 BFC（ 最大的一个 BFC ）
 
-### BFC 的作用：
+### BFC 的作用
 
 -   自适应两栏布局：阻止元素被浮动的元素覆盖，自适应成两栏布局
 -   清除内部浮动：解决浮动元素不占高度的问题（浮动元素未被包裹在父容器）
 -   解决 margin 重叠：为了防止 margin 重叠， 可以使多个 box 分属于不同的 BFC 时
 -   阻止元素被浮动元素覆盖
 
-### BFC 如何解决外边距重叠：
+### BFC 如何解决外边距重叠（塌陷）
 
-内部的盒子会在垂直方向，一个一个地放置；
-盒子垂直方向的距离由 margin 决定，属于同一个 BFC 的两个相邻 Box 的上下 margin 会发生重叠；
-每个元素的左边，与包含的盒子的左边相接触，即使存在浮动也是如此；
-BFC 的区域不会与 float 重叠；
-BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之也是如此；
-计算 BFC 的高度时，浮动元素也参与计算。
+在没有 BFC 的时候，两个相邻的块级元素（比如两个 div），上面的 div 有一个下外边距，下面的 div 有一个上外边距。如果它们在同一个 BFC 中，这两个外边距会合并，只取**较大的那个值**。
+
+但是如果把其中一个 div 放在一个 BFC 中（比如给这个 div 设置 `overflow: hidden` 触发 BFC），它们的外边距就不会合并了。就像把其中一个 div 放在一个盒子里，**这个盒子阻止了外边距的合并**。
+
+```html
+<!-- 外边距会重叠 -->
+<div style="margin-bottom: 20px;">第一个 div</div>
+<div style="margin-top: 30px;">第二个 div</div>
+
+<!-- 外边距为负，不会重叠 -->
+<div style="margin-bottom: -20px;">第一个 div</div>
+<div style="margin-top: -30px;">第二个 div</div>
+<!-- 此时两个负边距会分别生效，元素会向相反方向移动，最终间距为 50px -->
+
+<!-- 使用 BFC 防止外边距重叠 -->
+<div style="margin-bottom: 20px;">第一个 div</div>
+<div style="overflow: hidden;">
+	<div style="margin-top: 30px;">第二个 div</div>
+</div>
+```
+
