@@ -116,7 +116,7 @@ XSS 是 Cross-Site Scripting 的缩写，是一种攻击方法，用于在网页
 
 -   使用 CORS 策略
 
-    -   服务器通过 Access-Control-Allow-Origin 等响应头
+    -   服务器通过 `Access-Control-Allow-Origin` 等响应头
     -   明确指定允许访问的源
     -   对于非简单请求，先发送预检请求(OPTIONS)验证
 

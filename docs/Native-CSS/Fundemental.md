@@ -98,7 +98,7 @@ BFC：Block Formatting Context（块级格式化上下文），是一个**独立
 -   绝对定位元素，position 属性为 absolute ，fixed
 -   非块级盒子的块级容器（ display 值为 inline-blocks , table-cells , table-captions 等）
 -   overflow 的值不为 visible （ visiable 是默认值。内容不会被修剪，会呈现在元素框之外）
--   除此之外，根元素， HTML 元素本身就是 BFC（ 最大的一个 BFC ）
+-   除此之外，**根元素， HTML 元素本身就是 BFC**（ 最大的一个 BFC ）
 
 ### BFC 的作用
 
