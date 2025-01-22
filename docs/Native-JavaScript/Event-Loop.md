@@ -1,91 +1,126 @@
+---
+description: 事件循环是 JavaScript 的执行模型，它决定了 JavaScript 如何处理任务。
+keywords: [Event Loop, JavaScript, 事件循环, 异步编程, 宏任务, 微任务]
+---
+
 # 事件循环 Event Loop
 
-我们先来看一段来自 W3C 的[提案](https://www.w3.org/TR/requestidlecallback/)的内容：
+:::tip[为什么要理解事件循环？]
 
-> Web pages often want to execute computation tasks on the browser's event loop which are not time-critical, but might take a significant portion of time to perform. Examples of such background tasks include recording analytics data, long running data processing operations, client-side templating and pre-rendering of content likely to become visible in the near future. These tasks must share the event loop with other time-critical operations, such as reacting to input and performing script-based animations using `[requestAnimationFrame](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-animationframeprovider-requestanimationframe)()`
-> . These background tasks are typically performed by scheduling a callback using `[setTimeout](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout)()`
->  and running the background task during that callback.
+理解事件循环不仅仅是为了应付面试。它是理解 JavaScript 如何工作的基础。如果你想写出高性能的 JavaScript 代码，就必须理解事件循环的原理。
 
-翻译成中文：
+:::
 
-> 网页通常希望在浏览器的事件循环中执行计算任务，这些任务对时间要求不高，但可能会花费大量时间来执行。此类后台任务的示例包括记录分析数据、长时间运行的数据处理操作、客户端模板化和可能在不久的将来变得可见的内容预呈现。这些任务必须与其他时间关键操作共享事件循环，例如使用 requestAnimationFrame() 对输入做出反应和执行基于脚本的动画
-> .这些后台任务通常通过使用 setTimeout() 安排回调来执行，并在该回调期间运行后台任务。
+## 从一个简单的问题说起
 
-我们可以发现，`setTimeout()`可以用来执行一些消耗性能但不重要的工作，即使把延迟设置为 0，回调函数仍然不会阻塞渲染。为了搞清楚这个问题，我们可以做个实验（此处建议打开开发者工具运行一下代码）：
-
-```jsx
-const seconds = new Date().getTime() / 1000;
-
-setTimeout(() => {
-	console.log(`Ran after ${new Date().getTime() / 1000 - seconds} seconds`);
-}, 1000);
-```
-
-执行这段代码我们可以发现，它几乎是完全按照预期执行的：确实延迟了 1 秒钟左右。但如果我们继续添加一段耗时 2 秒的任务：
-
-```jsx
-const seconds = new Date().getTime() / 1000;
-
-setTimeout(() => {
-	console.log(`Ran after ${new Date().getTime() / 1000 - seconds} seconds`);
-}, 1000);
-
-while (true) {
-	if (new Date().getTime() / 1000 - seconds >= 2) {
-		console.log("Good, looped for 2 seconds");
-		break;
-	}
-}
-```
-
-我们会发现原来按时执行的函数也被延后了 2 秒。也就是说，作为解释型语言的 JavaScript 并没有真的自上而下“执行”。
-
-为了搞清楚原因，就要研究 Javascript 的任务调度机制。而这种机制又根据环境分为[浏览器](../%E8%BD%AF%E7%B4%A0%E8%B4%A8%20b1c97dfa39634513827e372a3b422eaa/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%20212a07ad4e1e4e93808f988963889dcd.csv)和 node.js 环境。
-
-不同于许多其它语言，JavaScript 是非阻塞的。但是**在浏览器中**，js 的执行会阻塞 DOM 渲染。如果某个脚本执行时间过长，就会导致页面卡顿，影响使用体验。
-
-js 会不断执行任务队列（事实上，就是一个栈结构，最早添加的任务最先执行）直到被清空。
-
-重点来了，js 还对任务进行了分类，在浏览器中，包括：
-
--   宏任务：一般的代码，包括通过`setTimeout` `setInterval` `setImeediate` 注册的回调函数。会通过一个栈结构维护。
--   微任务：通常是回调函数，包括传入`then/catch/finally`的函数。特别地，`queueMicrotask(func)`这个内置方法可以添加任意函数为微任务。
-
-每个宏任务执行完成后，js 会立即执行微任务队列直至微任务清空。概括的讲，**只有在微任务队列为空时，宏任务才会被执行。**
-
-> **冷知识**：在浏览器中，即使把`setTimeout`的延迟设置为 0，也会有大约 4ms 的执行延迟。（[via](https://javascript.info/event-loop)）、
-
-此外，如果想在 event loop 之外执行一些消耗性能的工作，可以通过 Web Worker 开启一个新的线程，不阻塞渲染，也不阻塞事件循环。
-
-## 用 setTimeout 来实现 setInterval
-
-有了上面的知识，我们考虑这样一个需求：实现一个`setInterval`函数，它的功能和`setInterval`一样，但是不使用`setInterval`。
+几乎所有编程入门教程都会告诉你，代码是自上而下执行的。但实际情况要复杂得多。让我们看一个例子：
 
 ```js
-function cusomizeInterval(fn, interval) {
-	setTimeout(function () {
-		fn();
-		setTimeout(arguments.callee, interval);
-	}, interval);
-}
+console.log("开始");
+
+setTimeout(() => {
+	console.log("一秒后");
+}, 1000);
+
+console.log("结束");
 ```
 
-## NodeJS
+这段代码的输出顺序是显而易见的：先打印"开始"，一秒后打印"一秒后"，最后打印"结束"。对吗？
 
-Node 环境下的事件循环与浏览器有很多不同。
+实际上不是。真实的输出是：
 
-1. timers
-2. pending callbacks
-3. idle, prepare
-4. poll
-5. check
-6. close callbacks
+1. 开始
+2. 结束
+3. 一秒后
 
-## 面试题
+这个现象暴露了 JavaScript 一个重要的特性：它是非阻塞的。这意味着 JavaScript 不会等待某个操作完成才继续执行下一行代码。即 JS **不是严格从上到下**执行的。
 
-来看一道经典的事件循环面试题（题目来源于网络）：
+## 为什么需要事件循环？
 
-```jsx
+设想一下，如果 JavaScript 是严格按照代码顺序执行的，会发生什么？当你发起一个网络请求，整个程序就会卡在那里等待响应。用户界面会完全卡死，无法响应任何操作。这显然是不可接受的。
+
+事件循环就是为了解决这个问题而设计的。它让 JavaScript 能够一边执行代码，一边等待异步操作的结果。
+
+## 事件循环的核心概念
+
+事件循环可以被想象成一个永不停止的循环，它在处理三种不同的任务：
+
+1. **同步任务**：直接在主线程上排队执行的任务
+2. **宏任务（MacroTask）**：setTimeout、setInterval、I/O、UI 渲染等
+3. **微任务（MicroTask）**：Promise 回调、queueMicrotask、MutationObserver 等
+
+它们的执行顺序是这样的：
+
+1. 执行同步任务，直到调用栈清空
+2. 执行所有微任务
+3. 执行一个宏任务
+4. 重复步骤 2 和 3
+
+让我们通过一个更复杂的例子来理解这个过程：
+
+```js
+console.log("1"); // 同步任务
+
+setTimeout(() => {
+	console.log("2"); // 宏任务
+}, 0);
+
+Promise.resolve().then(() => {
+	console.log("3"); // 微任务
+});
+
+console.log("4"); // 同步任务
+```
+
+输出顺序是：1、4、3、2
+
+为什么是这个顺序？让我们一步步分析：
+
+1. 首先执行同步任务，打印 1 和 4
+2. setTimeout 的回调被放入宏任务队列
+3. Promise 的回调被放入微任务队列
+4. 同步任务执行完毕，检查微任务队列，执行 Promise 回调，打印 3
+5. 微任务队列清空后，执行一个宏任务，打印 2
+
+## 浏览器和 Node.js 的区别
+
+虽然事件循环的基本概念在浏览器和 Node.js 中是相同的，但实现细节有所不同。
+
+浏览器的事件循环主要关注：
+
+-   DOM 事件
+-   用户交互
+-   脚本执行
+-   UI 渲染
+-   网络请求
+
+而 Node.js 的事件循环分为 6 个阶段：
+
+1. timers：执行 setTimeout 和 setInterval 的回调
+2. pending callbacks：执行系统操作的回调（如 TCP 错误）
+3. idle, prepare：仅供内部使用
+4. poll：获取新的 I/O 事件
+5. check：执行 setImmediate 的回调
+6. close callbacks：执行关闭事件的回调
+
+## 实践应用
+
+理解事件循环后，我们就能更好地控制代码的执行顺序。例如，如果我们需要在下一个微任务中执行某些操作：
+
+```js
+function nextTick(fn) {
+	Promise.resolve().then(fn);
+}
+
+// 或者使用内置API
+queueMicrotask(() => {
+	// 这里的代码会在当前同步任务执行完后立即执行
+});
+```
+
+再来看一个更复杂的例子：
+
+```js
 setTimeout(function () {
 	console.log("setTimeOut1"); //六
 	new Promise(function (resolve) {
@@ -122,28 +157,41 @@ new Promise(function (resolve) {
 }).then(function () {
 	console.log("then3"); //五
 });
-
-/*
-promise1
-2
-then1
-queueMicrotask1
-then3
-setTimeOut1
-then2
-then4
-setTimeOut2
-*/
 ```
 
-你可能会疑问：第一个`setTimeout`被执行的时候，微任务不是空的吗？为什么不立刻执行`setTimeout`里面的内容呢？
+打印顺序是：
 
-文章开头已经提到，`settimeout`可以用于延迟某个函数的执行。即使设置的 delay 为 0，javascript 的解释器也会先执行完全部代码，然后根据形成的微任务队列，执行微任务，最后执行宏任务。
+1. promise1
+2. 2
+3. then1
+4. queueMicrotask1
+5. then3
+6. setTimeOut1
+7. then2
+8. then4
+9. setTimeOut2
 
-又由于`setTimeout`本身是宏任务，所以只有等待前面的三个微任务（then1, queueMicrotask1, then3）执行完毕后才会执行。
+## 性能优化
+
+理解事件循环对性能优化至关重要。以下是一些实践建议：
+
+1. **避免长时间运行的同步任务**：它们会阻塞主线程
+2. **合理使用微任务和宏任务**：微任务执行更快，但过多的微任务会延迟 UI 渲染
+3. **使用 requestAnimationFrame 进行动画**：它会在最合适的时机执行
+4. **考虑使用 Web Worker**：将耗时操作放在单独的线程中执行
+
+## 总结
+
+事件循环不仅是一个技术概念，更是 JavaScript 异步编程的核心机制。理解它可以帮助我们：
+
+-   写出更高效的代码
+-   避免常见的异步编程陷阱
+-   更好地处理复杂的异步操作
+
+记住：JavaScript 不是真的"多线程"，而是通过事件循环这种巧妙的机制，让单线程的语言也能高效地处理异步操作。
 
 ## 扩展阅读
 
--   [Event loop: microtasks and macrotasks](https://javascript.info/event-loop)
--   [js 事件循环详解\_卖菜的小白的博客-CSDN 博客\_js 事件循环](https://blog.csdn.net/weixin_47450807/article/details/123131474)
--   [](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+-   [深入理解事件循环](https://javascript.info/event-loop)
+-   [Node.js 事件循环文档](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+-   [Jake Archibald 关于事件循环的演讲](https://www.youtube.com/watch?v=cCOL7MC4Pl0)

@@ -55,6 +55,18 @@ ul.addEventListener("click", function (event) {
 
 比如，当你点击一个 li 元素时，首先会触发 li 元素本身的点击事件，然后这个事件会冒泡到 ul 元素，接着会继续冒泡到更高层的元素。在事件代理中，我们在 ul 元素上设置的事件监听器就可以在事件冒泡到 ul 时捕获这个事件。
 
+### 正则
+
+```js
+/^[a-zA-Z0-9]@[]+\.[a-zA-Z]{2,}$/
+
+/^1[0-9]\d{9}$/
+
+/^https?:\/\/example\.com\/\/
+```
+
+RegExp 是 JS 中的引用类型，因此在使用时需要注意与基本数据类型的区别。关于引用数据类型，可以阅读 [引用数据类型](./Fundemental.md#引用数据类型) 章节。
+
 ## 了解更多
 
-你可以阅读 [手写函数](./Handwriting-Functions.md) 章节检测自己的 JS 基础知识。
+你可以继续阅读 [手写函数](./Handwriting-Functions.md) 章节检测自己的 JS 基础知识。
